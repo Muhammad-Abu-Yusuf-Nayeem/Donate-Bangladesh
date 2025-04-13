@@ -8,26 +8,43 @@ function getInputValueById(id) {
   return parseFloat(value);
 }
 
-function getTextData(string) {
-  if (string === "Feni") {
-    let textData = "Taka is Donated for famine-2024 at Feni, Bangladesh";
-    return textData;
-  } else if (string === "Noakhali") {
-    let textData = "TTaka is Donated for Flood Relief in Noakhali,Bangladesh";
-    return textData;
-  } else if (string === "Quota") {
-    let textData = " Taka is Donated for Aid for Injured in the Quota Movement, Bangladesh";
-    return textData;
+function getTimeData() {
+  const currentTime = new Date();
+  return currentTime.toString();
+}
+
+function getTextData(area) {
+  if (area === "Feni") {
+    return "Taka is Donated for famine-2024 at Feni, Bangladesh";
+  } else if (area === "Noakhali") {
+    return "Taka is Donated for Flood Relief in Noakhali, Bangladesh";
+  } else if (area === "Quota") {
+    return "Taka is Donated for Aid for Injured in the Quota Movement, Bangladesh";
+  } else {
+    return "Taka is Donated for General Relief Efforts in Bangladesh";
   }
 }
 
 function setFieldValueById(displayId, inputId, localArea) {
-  const currentAmount = getFieldValueById(displayId); // Get displayed number
-  const donateAmount = getInputValueById(inputId); // Get number from input
+  const currentAmount = getFieldValueById(displayId);
+  const donateAmount = getInputValueById(inputId);
 
   const total = currentAmount + donateAmount;
-  document.getElementById(displayId).innerText = total.toFixed(2); // Optional: format to 2 decimals
+  document.getElementById(displayId).innerText = total.toFixed(2);
+
   const textData = getTextData(localArea);
+  const time = getTimeData();
+
+  const historySection = document.getElementById("History");
+  const donationInfo = document.createElement("div");
+
+  donationInfo.innerHTML = `
+    <p>${donateAmount} ${textData}</p>
+    <p>Date : ${time}</p>
+    <hr/>
+  `;
+
+  historySection.appendChild(donationInfo);
 }
 
 // Event listener
@@ -37,6 +54,6 @@ document
     setFieldValueById(
       "noakhali-current-amount",
       "noakhali-donate-field",
-      "Feni"
-    ); // Noakhali, Feni, Quota
+      "Noakhali"
+    ); // You can also use "Feni" or "Quota"
   });
