@@ -25,12 +25,32 @@ function getTextData(area) {
   }
 }
 
+function updateTargetAmount(amount) {
+  const targetAmount = document.getElementById("targetAmount").innerText;
+  let currentAmount = parseFloat(targetAmount);
+  currentAmount -= amount;
+  document.getElementById("targetAmount").innerText = currentAmount;
+}
+
+function openModal() {
+  const closeBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("modal");
+
+  modal.classList.remove("hidden");
+  closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+}
 function setFieldValueById(displayId, inputId, localArea) {
   const currentAmount = getFieldValueById(displayId);
   const donateAmount = getInputValueById(inputId);
 
+  if (isNaN(donateAmount) || donateAmount <= 0) {
+    alert("Please enter a valid donation amount.");
+    return;
+  }
+
   const total = currentAmount + donateAmount;
   document.getElementById(displayId).innerText = total.toFixed(2);
+  document.getElementById(inputId).value = ""; // Clear input field
 
   const textData = getTextData(localArea);
   const time = getTimeData();
@@ -39,15 +59,17 @@ function setFieldValueById(displayId, inputId, localArea) {
   const donationInfo = document.createElement("div");
 
   donationInfo.innerHTML = `
-    <p>${donateAmount} ${textData}</p>
+    <p>${donateAmount.toFixed(2)} ${textData}</p>
     <p>Date : ${time}</p>
     <hr/>
   `;
 
   historySection.appendChild(donationInfo);
+  updateTargetAmount(donateAmount);
+  openModal();
 }
 
-// Event listener
+// Event listener noakhali
 document
   .getElementById("noakhali-donate-button")
   .addEventListener("click", function () {
@@ -56,4 +78,16 @@ document
       "noakhali-donate-field",
       "Noakhali"
     ); // You can also use "Feni" or "Quota"
+  });
+// Event listener Feni
+document
+  .getElementById("feni-donate-button")
+  .addEventListener("click", function () {
+    setFieldValueById("feni-current-amount", "feni-donate-field", "Feni"); // You can also use "Feni" or "Quota"
+  });
+// Event listener Quota
+document
+  .getElementById("quota-donate-button")
+  .addEventListener("click", function () {
+    setFieldValueById("quota-current-amount", "quota-donate-field", "Quota"); // You can also use "Feni" or "Quota"
   });
