@@ -39,6 +39,7 @@ function openModal() {
   modal.classList.remove("hidden");
   closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
 }
+
 function setFieldValueById(displayId, inputId, localArea) {
   const currentAmount = getFieldValueById(displayId);
   const donateAmount = getInputValueById(inputId);
@@ -57,22 +58,33 @@ function setFieldValueById(displayId, inputId, localArea) {
 
   const historySection = document.getElementById("History");
   const donationInfo = document.createElement("div");
+  donationInfo.classList.add(
+    "p-6",
+    "my-4",
+    "border",
+    "rounded-xl", // smooth corners
+    "shadow-md", // light shadow for depth
+    "bg-white", // background (useful if on a gray section)
+    "text-gray-800" // better readability
+  );
 
   donationInfo.innerHTML = `
     <p>${donateAmount.toFixed(2)} ${textData}</p>
     <p>Date : ${time}</p>
-    <hr/>
   `;
 
   historySection.appendChild(donationInfo);
   updateTargetAmount(donateAmount);
+  console.log("Modal is being called");
   openModal();
 }
 
 // Event listener noakhali
 document
   .getElementById("noakhali-donate-button")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (Event) {
+    Event.preventDefault();
+
     setFieldValueById(
       "noakhali-current-amount",
       "noakhali-donate-field",
@@ -82,12 +94,23 @@ document
 // Event listener Feni
 document
   .getElementById("feni-donate-button")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (Event) {
+    Event.preventDefault();
     setFieldValueById("feni-current-amount", "feni-donate-field", "Feni"); // You can also use "Feni" or "Quota"
   });
 // Event listener Quota
 document
   .getElementById("quota-donate-button")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (Event) {
+    Event.preventDefault();
     setFieldValueById("quota-current-amount", "quota-donate-field", "Quota"); // You can also use "Feni" or "Quota"
   });
+
+document.getElementById("btn-donation").addEventListener("click", function () {
+  document.getElementById("donate-page").classList.remove("hidden");
+  document.getElementById("History").classList.add("hidden");
+});
+document.getElementById("btn-history").addEventListener("click", function () {
+  document.getElementById("donate-page").classList.add("hidden");
+  document.getElementById("History").classList.remove("hidden");
+});

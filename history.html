@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate Bangladesh</title>
+    <!-- Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            fontFamily: {
+              manrope: ["Manrope", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="manrope">
+    <!-- Donation section -->
+    <article>
+      <!-- navbar section -->
+      <nav class="flex justify-between items-center bg-[#EEEEEE] py-4 px-36">
+        <button class="py-2 px-6 bg-[#B4F461] rounded-lg">Blog</button>
+        <div class="flex justify-center w-fit items-center gap-2">
+          <img class="h-10" src="assets/logo.png" alt="" />
+          <span>Donate Bangladesh</span>
+        </div>
+        <div class="flex justify-center items-center gap-2">
+          <img class="h-6" src="assets/coin.png" alt="" />
+          <span id="targetAmount">5500</span>
+          <span>BDT</span>
+        </div>
+      </nav>
+      <!-- main section-->
+      <main class="px-36">
+        <!-- manu  -->
+        <div class="flex gap-2 justify-center py-6 mt-6">
+            <button class="py-2 px-6 bg-[#B4F461] rounded-lg border">
+              <a href="index.html">Donation</a>
+            </button>
+            <button class="py-2 px-6 bg-[#ffffff] rounded-lg border">
+              <a href="history.html">History</a>
+            </button>
+          </div>
+        
+
+    <!-- History article -->
+    <article class="px-36" id="History"></article>
+
+    <button
+  class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg"
+  onclick="localStorage.removeItem('donationHistory'); location.reload();"
+>
+  Clear Donation History
+</button>
+    <script src="js/function.js"></script>
+  </body>
+</html>
+

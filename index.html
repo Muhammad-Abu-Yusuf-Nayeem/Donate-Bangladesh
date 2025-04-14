@@ -32,8 +32,7 @@
     />
   </head>
   <body class="manrope">
-    <!-- Donation section -->
-    <article>
+    <article class="sticky top-0 z-50 bg-[#EEEEEE]">
       <!-- navbar section -->
       <nav class="flex justify-between items-center bg-[#EEEEEE] py-4 px-36">
         <button class="py-2 px-6 bg-[#B4F461] rounded-lg">Blog</button>
@@ -47,17 +46,26 @@
           <span>BDT</span>
         </div>
       </nav>
+      <!-- manu  -->
+      <div class="flex gap-2 justify-center py-6 mt-6">
+        <button
+          id="btn-donation"
+          class="py-2 px-6 bg-[#B4F461] rounded-lg border"
+        >
+          Donation
+        </button>
+        <button
+          id="btn-history"
+          class="py-2 px-6 bg-[#ffffff] rounded-lg border"
+        >
+          History
+        </button>
+      </div>
+    </article>
+    <!-- Donation section -->
+    <article id="donate-page">
       <!-- main section-->
       <main class="px-36">
-        <!-- manu  -->
-        <div class="flex gap-2 justify-center py-6 mt-6">
-          <button class="py-2 px-6 bg-[#B4F461] rounded-lg border">
-            Donation
-          </button>
-          <button class="py-2 px-6 bg-[#ffffff] rounded-lg border">
-            History
-          </button>
-        </div>
         <!-- Card  sections-->
         <!--Noakhali Card -->
         <section class="gird columns-2 p-6 border rounded-lg my-6">
@@ -178,7 +186,9 @@
         <!-- Modal Box -->
         <div class="bg-white px-16 py-8 rounded-xl shadow-lg text-center">
           <h2 class="mb-4 font-bold text-[25px]">Congrates!</h2>
-          <p class="flex items-center justify-center"><img src="assets/coin.png" alt=""></p>
+          <p class="flex items-center justify-center">
+            <img src="assets/coin.png" alt="" />
+          </p>
           <p class="mb-4">You Have Donated for Humankind</p>
           <h2>Successfully</h2>
           <button
@@ -192,8 +202,7 @@
     </div>
 
     <!-- History article -->
-    <article id="History"></article>
+    <article class="px-36" id="History"></article>
     <script src="js/function.js"></script>
   </body>
 </html>
-
