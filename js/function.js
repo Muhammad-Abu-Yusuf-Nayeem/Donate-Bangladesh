@@ -109,8 +109,17 @@ document
 document.getElementById("btn-donation").addEventListener("click", function () {
   document.getElementById("donate-page").classList.remove("hidden");
   document.getElementById("History").classList.add("hidden");
+
+  document.getElementById("btn-history").classList.add("bg-[#ffffff]");
+  document.getElementById("btn-history").classList.remove("bg-[#B4F461]");
+  document.getElementById("btn-donation").classList.add("bg-[#B4F461]");
+  document.getElementById("btn-donation").classList.remove("bg-[#ffffff]");
 });
 document.getElementById("btn-history").addEventListener("click", function () {
   document.getElementById("donate-page").classList.add("hidden");
   document.getElementById("History").classList.remove("hidden");
+  document.getElementById("btn-history").classList.remove("bg-[#ffffff]");
+  document.getElementById("btn-history").classList.add("bg-[#B4F461]");
+  document.getElementById("btn-donation").classList.remove("bg-[#B4F461]");
+  document.getElementById("btn-donation").classList.add("bg-[#ffffff]");
 });
